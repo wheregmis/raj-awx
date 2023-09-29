@@ -8,3 +8,8 @@
     - name: Execute Python script
       ansible.builtin.command:
         cmd: python3 ./hello_world.py
+      register: command_output  # register command output to a variable
+
+    - name: Show command output
+      ansible.builtin.debug:  # use debug module to print the command output
+        msg: "{{ command_output.stdout }}"  # print the standard output
