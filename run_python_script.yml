@@ -1,9 +1,9 @@
 # run_python_script.yml
 ---
 - name: Run Python Script
-  hosts: all
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Execute Python script
       ansible.builtin.command:
-        cmd: python3 /path/to/hello_world.py
+        cmd: python3 hello_world.py
