@@ -7,4 +7,4 @@
   tasks:
     - name: Execute Python script
       ansible.builtin.command:
-        cmd: python3 hello_world.py
+        cmd: python3 ./hello_world.py
