@@ -1,7 +1,8 @@
 ---
 - name: Automate Tasks
   hosts: localhost
-  gather_facts: no
+  connection: local
+  gather_facts: false
   tasks:
 
     - name: Read the Excel File
