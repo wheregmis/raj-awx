@@ -6,20 +6,20 @@
   tasks:
 
     - name: Read the Excel File
-      command: python3 read_excel.py 
+      command: python3 scripts/read_excel.py 
       register: excel_output
       ignore_errors: yes
 
-    - name: Generate a Configuration File
-      command: python3 generate_config.py
-      when: excel_output is succeeded
-      register: config_status
-      ignore_errors: yes
+    # - name: Generate a Configuration File
+    #   command: python3 scripts/generate_config.py
+    #   when: excel_output is succeeded
+    #   register: config_status
+    #   ignore_errors: yes
 
-    - name: Run Docker Compose
-      command: docker-compose -f scripts/docker-compose.yml up -d
-      when: config_status is succeeded
-      ignore_errors: yes
+    # - name: Run Docker Compose
+    #   command: docker-compose -f scripts/docker-compose.yml up -d
+    #   when: config_status is succeeded
+    #   ignore_errors: yes
 
     - name: Handle Failure
       debug:
