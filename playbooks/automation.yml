@@ -25,7 +25,7 @@
         var: config_status.stdout_lines
 
     - name: Run Docker Compose
-      command: docker-compose -f composetest/docker-compose.yml up -d
+      command: docker-compose -f scripts/docker-compose.yml up -d
       when: config_status is succeeded
       ignore_errors: yes
 
