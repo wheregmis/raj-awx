@@ -4,15 +4,26 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: Giving Permission to Script
-      command: chmod +x ../scripts/modbus_bridge
-      register: permission_output
-
-    - name: Run Modbus Bridge
-      command: ../scripts/modbus_bridge
+    - name: Execute multiple commands
+      shell: |
+        cd ../scripts
+        python3 generate_config.py
+        pwd
       register: script_output
-      when: permission_output is succeeded
-      ignore_errors: no
+          
+
+    # - name: Giving Permission to Script
+    #     command: 
+    #       - chmod +x ../scripts/modbus_bridge
+    #       - ../scripts/modbus_bridge
+    #     register: permission_output
+    #     ignore_errors: no
+
+    # - name: Run Modbus Bridge
+    #   command: ../scripts/modbus_bridge
+    #   register: script_output
+    #   when: permission_output is succeeded
+    #   ignore_errors: no
     # - name: Giving Permission to Script
     #   command: chmod +x ../scripts/test.sh
     #   register: permission_output
