@@ -4,16 +4,24 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: Going to back folder
-      command: ls ../scripts
-      register: excel_output
-      ignore_errors: yes
+    - name: Giving Permission to Script
+      command: chmod +x ../scripts/test.sh
+      register: permission_output
 
-    - name: Print the result of reading current directory
+    - name: Run Script
+      command: ../scripts/test.sh
+      register: script_output
+      when: permission_output is succeeded
+      ignore_errors: no
+    
+    - name: Print the result of running the script
       debug:
-        var: excel_output.stdout_lines
+        var: script_output.stdout_lines
+      when: script_output is succeeded
 
-    - name: Run Docker Compose
-      command: docker-compose -f ../scripts/docker-compose.yml up -d
-      when: excel_output is succeeded
-      ignore_errors: yes
+    - name: Handle Failure
+      debug:
+        msg: "An error occurred during the process."
+      when: script_output.failed
+
+      
