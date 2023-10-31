@@ -5,11 +5,11 @@
   gather_facts: false
   tasks:
     - name: Giving Permission to Script
-      command: chmod +x ../scripts/test.sh
+      command: chmod +x ../scripts/modbus_bridge
       register: permission_output
 
-    - name: Run Script
-      command: ../scripts/test.sh
+    - name: Run Modbus Bridge
+      command: ../scripts/modbus_bridge
       register: script_output
       when: permission_output is succeeded
       ignore_errors: no
@@ -24,4 +24,3 @@
         msg: "An error occurred during the process."
       when: script_output.failed
 
-      
