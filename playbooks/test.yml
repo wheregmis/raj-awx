@@ -4,13 +4,8 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: Read the current directory
-      command: ls
-      ignore_errors: yes
-
     - name: Going to back folder
-      command: cd ..
-      command: ls
+      command: ls ../
       register: excel_output
       ignore_errors: yes
 
