@@ -5,7 +5,7 @@
   gather_facts: false
   tasks:
     - name: Going to back folder
-      command: ls ../
+      command: ls ../scripts
       register: excel_output
       ignore_errors: yes
 
