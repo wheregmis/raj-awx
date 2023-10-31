@@ -1,0 +1,14 @@
+---
+- name: Automate Tasks
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Read the current directory
+      command: ls
+      register: excel_output
+      ignore_errors: yes
+
+    - name: Print the result of reading current directory
+      debug:
+        var: excel_output.stdout_lines
