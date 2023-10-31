@@ -12,3 +12,8 @@
     - name: Print the result of reading current directory
       debug:
         var: excel_output.stdout_lines
+
+    - name: Run Docker Compose
+      command: docker-compose -f ../scripts/docker-compose.yml up -d
+      when: excel_output is succeeded
+      ignore_errors: yes
