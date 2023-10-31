@@ -6,6 +6,14 @@
   tasks:
     - name: Read the current directory
       command: ls
+      ignore_errors: yes
+
+    - name: Going to back folder
+      command: cd ..
+      ignore_errors: yes
+
+    - name: Read the current directory
+      command: ls
       register: excel_output
       ignore_errors: yes
 
