@@ -4,16 +4,25 @@
   connection: local
   gather_facts: false
   tasks:
+    # - name: Giving Permission to Script
+    #   command: chmod +x ../scripts/modbus_bridge
+    #   register: permission_output
+
+    # - name: Run Modbus Bridge
+    #   command: ../scripts/modbus_bridge
+    #   register: script_output
+    #   when: permission_output is succeeded
+    #   ignore_errors: no
     - name: Giving Permission to Script
-      command: chmod +x ../scripts/modbus_bridge
+      command: chmod +x ../scripts/test.sh
       register: permission_output
 
     - name: Run Modbus Bridge
-      command: ../scripts/modbus_bridge
+      command: ../scripts/test.sh
       register: script_output
       when: permission_output is succeeded
       ignore_errors: no
-    
+
     - name: Print the result of running the script
       debug:
         var: script_output.stdout_lines
